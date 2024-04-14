@@ -1,0 +1,14 @@
+.carousel-container {
+  width: 300vw;
+
+  transition: all 1s;
+}
+
+.img-box {
+  width: 100vw;
+  float: left;
+}
+
+.img-box img {
+  width: 100%;
+}

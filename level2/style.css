@@ -1,0 +1,84 @@
+@import "carousel.css";
+@import "css/detail.css";
+:root {
+  scroll-behavior: auto;
+}
+.alert-box {
+  background-color: skyblue;
+  padding: 20px;
+  color: white;
+  border-radius: 5px;
+  visibility: hidden;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+}
+
+.navbar-brand-animation {
+  font-size: 40px;
+  transition: all 1s;
+}
+
+#close {
+  border: 0px;
+  margin-left: 5px;
+  display: inline-block;
+}
+
+.list-group {
+  opacity: 0;
+  max-height: 0px;
+  overflow: hidden;
+  transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out; /* 부드러운 애니메이션 효과 추가 */
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.black-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  padding: 30px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.white-bg {
+  background: white;
+  border-radius: 5px;
+  padding: 30px;
+  visibility: hidden;
+}
+
+#modalBtn {
+  padding: 8px;
+  border: 1px solid tomato;
+  background: tomato;
+  color: white;
+  border-radius: 8px;
+}
+
+.main-bg {
+  padding: 100px 20px;
+  background: lightgray;
+}
+
+.show {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.show-modal {
+  visibility: visible;
+  opacity: 1;
+}
+
+.text {
+}

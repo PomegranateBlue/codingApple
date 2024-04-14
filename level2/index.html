@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coding Apple(BootStrap)</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav id="fixNav" class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <span class="navbar-brand text">Navbar</span>
+        <span id="darkModeBtn" class="badge bg-dark ms-auto mx-3">Dark</span>
+        <button id="hamBtn" class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <script>
+      window.addEventListener("scroll", function () {
+        if (window.scrollY >= 100) {
+          document
+            .querySelector(".navbar-brand")
+            .classList.add("navbar-brand-animation");
+        } else if (window.scrollY <= 100) {
+          document
+            .querySelector(".navbar-brand")
+            .classList.remove("navbar-brand-animation");
+        }
+      });
+    </script>
+
+    <ul class="list-group text">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A fourth item</li>
+      <li class="list-group-item">And a fifth one</li>
+    </ul>
+
+    <div class="black-bg">
+      <div class="white-bg">
+        <h4>Please Sign up</h4>
+
+        <form action="login.html">
+          <div class="my-3">
+            <input type="text" class="form-control" id="userId" />
+          </div>
+          <div class="my-3">
+            <input type="password" class="form-control" id="userPasswd" />
+          </div>
+          <button type="submit" id="userSubmit" class="btn btn-primary">
+            Submit
+          </button>
+          <button class="btn btn-danger" id="close">Exit</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="main-bg">
+      <h3>Welcome my Space</h3>
+      <button id="modalBtn">Log In</button>
+    </div>
+
+    <div
+      id="userAgreement"
+      style="width: 200px; height: 120px; overflow-y: scroll"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas
+      voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat
+      sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur
+      praesentium exercitationem.
+    </div>
+
+    <script>
+      let userAgree = document.querySelector("#userAgreement");
+      userAgree.addEventListener("scroll", function () {
+        if (
+          userAgree.scrollTop + userAgree.clientHeight >
+          userAgree.scrollHeight - 10
+        ) {
+          alert("Do you consent this content?");
+        }
+        //console.log(userAgree.scrollTop); //188
+        //console.log(userAgree.scrollHeight); //288
+        //console.log(userAgree.clientHeight); //100
+      });
+    </script>
+    <div style="height: 1000px"></div>
+    <div style="height: 1000px"></div>
+
+    <div class="alert alert-danger" role="alert">
+      This banner will banish in
+      <span id="sec">5</span>
+      sec.
+    </div>
+    <div style="overflow: hidden">
+      <div class="carousel-container">
+        <div class="img-box">
+          <img src="car1.png" />
+        </div>
+        <div class="img-box">
+          <img src="car2.png" />
+        </div>
+        <div class="img-box">
+          <img src="car3.png" />
+        </div>
+      </div>
+    </div>
+
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="nextBtn">Next</button>
+    <button class="prevBtn">Prev</button>
+
+    <script>
+      var currentPos = 0;
+
+      $(".slide-1").on("click", function () {
+        currentPos = 0;
+        $(".carousel-container").css("transform", "translateX(0vw)");
+      });
+
+      $(".slide-2").on("click", function () {
+        currentPos = -100;
+        $(".carousel-container").css("transform", "translateX(-100vw)");
+      });
+
+      $(".slide-3").on("click", function () {
+        currentPos = -200;
+        $(".carousel-container").css("transform", "translateX(-200vw)");
+      });
+
+      $(".nextBtn").on("click", function () {
+        if (currentPos > -200) {
+          currentPos -= 100;
+          $(".carousel-container").css(
+            "transform",
+            "translateX(" + currentPos + "vw)"
+          );
+        }
+      });
+
+      $(".prevBtn").on("click", function () {
+        if (currentPos < 0) {
+          currentPos += 100;
+          $(".carousel-container").css(
+            "transform",
+            "translateX(" + currentPos + "vw)"
+          );
+        }
+      });
+    </script>
+
+    <script>
+      let count = 5;
+
+      setInterval(function () {
+        count--;
+        if (count >= 0) {
+          document.querySelector("#sec").innerHTML = count;
+        }
+        if (count == 0) {
+          $(".alert-danger").hide();
+        }
+      }, 1000);
+    </script>
+
+    <script>
+      const userID = document.querySelector("#userId");
+      const userPasswd = document.querySelector("#userPasswd");
+
+      document
+        .getElementById("userSubmit")
+        .addEventListener("click", function (e) {
+          if (userID.value === "") {
+            alert("please type your email ID");
+            e.preventDefault();
+          } else if (!/\S+@\S+\.\S+/.test(userID.value)) {
+            alert("This is not right for email form");
+            e.preventDefault();
+          } else if (userPasswd.value === "") {
+            alert("Please type your passwd");
+            e.preventDefault();
+          } else if (userPasswd.value.length < 6) {
+            alert("Passwd length should be more than 6 figures");
+            e.preventDefault();
+          } else if (/[A-Z]/.test(userPasswd.value)) {
+            alert("Upper case is not allowed in passwd");
+            e.preventDefault();
+          }
+        });
+    </script>
+
+    <script>
+      document.querySelector("#hamBtn").addEventListener("click", function () {
+        document.querySelector(".list-group").classList.toggle("show");
+      });
+
+      document
+        .querySelector("#modalBtn")
+        .addEventListener("click", function () {
+          document.querySelector(".black-bg").classList.add("show-modal");
+          document.querySelector(".white-bg").classList.add("show-modal");
+        });
+
+      document.querySelector("#close").addEventListener("click", function (e) {
+        document.querySelector(".black-bg").classList.remove("show-modal");
+        document.querySelector(".white-bg").classList.remove("show-modal");
+        e.preventDefault();
+      });
+    </script>
+
+    <script>
+      const darkMode = document.querySelector("#darkModeBtn");
+      let darkModeNum = 1;
+      darkMode.addEventListener("click", function () {
+        if (darkModeNum % 2 == 1) {
+          darkModeNum++;
+          darkMode.innerHTML = "Light";
+        } else if (darkModeNum % 2 != 1) {
+          darkModeNum--;
+          darkMode.innerHTML = "Dark";
+        }
+      });
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js"></script>
+  </body>
+</html>
